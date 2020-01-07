@@ -106,3 +106,10 @@ Naming for types is not final.
     - semi-random colorization for cover items, ie, 3 greens for bushes, 3 tones of grey for rocks
   <b> timers on the transitions as well, ie, on clicking 'begin': 3. 2. 1. Go!, etc. 
   <c> code cleanup / refactoring
+
+
+
+  Per Kenny - JS Velocity animation library
+  custom grid 
+  grid css class
+  flexbox

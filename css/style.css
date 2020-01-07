@@ -1,0 +1,74 @@
+body{
+  background-color: #f1f1f1;
+  font-family: 'Courier New'; 
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  
+}
+header{
+  padding: 0 .25vh;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-items:center;
+  height: 7.5vh;
+  background-color: #213A1B;
+}
+h1{
+  color: #000000;
+  font-size: 50px;
+  background-color:#BAE5F9;
+  line-height:7vh;
+  margin: 0 .25vh;
+  padding: 0 .5vh
+}
+#game_field{
+  background-color: #213A1B;
+  display:flex;
+  flex-wrap: wrap;
+  padding:.25vh;
+  height:75vh;
+  width:75vh;
+  border-radius: 5px;
+  cursor: url('../images/bino-small.png'), auto;
+}
+.cover{
+  background-color: #BAE5F9;
+  border-radius:2px;
+  margin: .25vh;
+  width: 7vh;
+  height: 7vh;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content:center;
+  font-size:5vh;
+}
+/* font awesome default icon color - keep at top until replaced */
+.fas{
+  color: teal;
+  position:relative;
+  z-index:1;
+}
+
+.bird{
+  position:absolute;
+  color:black;
+  z-index:0;
+}
+.rock{
+  color: #C56C39;
+}
+.bush{
+  color: #6F4930;
+}
+.tree{
+  color: #56903A;
+}
+/* .fa-crow{
+  color:black;
+  position:relative;
+  z-index:0;
+} */
