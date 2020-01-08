@@ -18,6 +18,7 @@ const game = {
     crows:0,
     kiwi:0,
   },
+  aniSpeed:['fast','','slow'],
 };
 
 // field generator
@@ -55,10 +56,10 @@ const paboi =(num)=>{
 
 //===game clock===//
 const tick=()=>{
-  paboi();
-  console.log(count);
+  paboi(locator(game.size));
+  console.log(game.time);
   document.getElementById('year').innerHTML= `${game.time}`; ////!TEMP! CHANGE THIS////
-  if(count<=0){
+  if(game.time<=0){
     clearInterval(gameClock);
     document.getElementById('year').innerHTML= `Time!`;
     return
@@ -76,26 +77,31 @@ const birdBounce=()=>{
     $('.kiwi').toggleClass(`animated bounce infinite`);
 }
 
-
+//===Animation Speed Randomizer===//
+const speed=()=>{
+  return game.aniSpeed[Math.floor(Math.random()*game.aniSpeed.length)];
+}
 // actually a nightmare, not fun. 
 //FIXME apply this to the specific bird per loop iteration!!
 const funBirds =()=>{
  for(let i=1;i<game.size;i+=locator(4)){
    paboi(i);
-  //  $('.bird').eq(i).addClass(`animated bounce infinite delay-${Math.floor(Math.random()*2)}s`);
+
   };
-  // $('.bird').each().addClass(`animated bounce infinite delay-${Math.floor(Math.random()*2)}s`);
+
   $.each($('.bird'), (elm)=>{
-   
     const randomDelay = Math.floor(Math.random()*10)
     console.log({elm,randomDelay});
-    $('.bird').eq(elm).addClass(`animated bounce infinite delay-${randomDelay}s`);
+    $('.bird').eq(elm).addClass(`animated bounce infinite ${speed()}`);
   })
 }
 //===Listeners===//
 // start button
 $('#start').on('click', ()=>{
-  $('#splash').toggleClass('slideOutUp');
+  $('#splash').toggleClass('fadeOut');
+  $('.bird').remove();
+  // buildField(game.size);
+  startClock();
 })
 // bird bouncer
 $('#btn-animate').on('click', funBirds);
@@ -107,7 +113,8 @@ $('body').on('click', '.bird', ()=>{
   console.log('bird spotted!')
 })
 
-
+//===AutoStart===//
+funBirds();
 
 
 
