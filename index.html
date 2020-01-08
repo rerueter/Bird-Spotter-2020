@@ -4,24 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- External CSS Libraries -->
   <script src="https://kit.fontawesome.com/ce53abcc65.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">
-  <script defer
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico|Permanent+Marker&display=swap" rel="stylesheet">
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- jQuery -->
+  <script defer src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script defer src="script/app.js"></script>
   <title>Bird Spotter 2020</title>
 </head>
+
+
 <body>
   <main>
     <header>
-      <div class="cover"><i class="bird logo animated bounce infinite fas fa-crow"></i></div>
-      <h1>Bird Spotter 2020</h1>
+      <div class="tile"><i class="bird logo animated bounce infinite fas fa-crow"></i></div>
+      <h1>B I R D <i class="fas fa-binoculars"></i> S P O T T E R <span id="year">2020</span></h1>
     </header>
       <section id="game_field"></section>
-      <button id="btn-animate">Animate</button>
-     </main>
+      <section class="buttons">
+        <button id="btn-animate">Animate</button>
+        <button id="btn-timer">Timer</button>
+        <button id="btn-clear">Clear</button>
+      </section>
+  </main>
 </body>
 </html>
+    
