@@ -36,14 +36,38 @@ header{
   /* border:solid 5px #C56C39; */
   border-radius:2.5px;
 }
+
+#splash{
+  position:absolute;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  border-top:5px solid #C56C39;
+  border-bottom:5px solid #C56C39;
+  top:35vh;
+  z-index:4;
+  height:30vh;
+  width:100vw;
+  background-color: #213A1B;
+}
+.logobar{
+  /* position:relative; */
+  display:inline-flex;
+  flex-direction:row;
+  justify-content:center;
+  margin-top:5px;
+}
 h1{
   font-family:'National Park Heavy';
   color: #000000;
   font-size: 50px;
   background-color:#BAE5F9;
   line-height:7vh;
-  margin: 0 .25vh;
-  padding: 0 1vh;
+  height:7vh;
+  /* width:60.5vh; */
+  margin:.25vh;
+  padding:0 1vh;
   border-radius: 2.5px;
 }
 #year{
@@ -53,7 +77,16 @@ h1{
   font-size:70px;
   height:7vh;
 }
+.menubar{
+  width:70vh;
+  height:7vh;
+  background-color: #BAE5F9;
+  margin-top:5px;
+  border-radius:2.5px;
+}
 #game_field{
+  position:absolute;
+  top:12.5vh;
   background-color: #213A1B;
   display:flex;
   flex-wrap: wrap;
@@ -107,14 +140,17 @@ h1{
 .logo{
 font-size: 4vh;
 }
-
+.buttons{
+  position:absolute;
+  bottom:5vh;
+}
 button{
   font-family:'National Park Heavy', sans-serif;
   letter-spacing:1px;
   background-color:#BAE5F9;
   border-radius:2px;
   padding:5px;
-  font-size:30px;
+  font-size:20px;
   margin-top:.25vh;
   height:5vh;
   width:10vh;
@@ -124,3 +160,6 @@ button{
   position:relative;
   z-index:0;
 } */
+.hidden{
+  visibility:hidden;
+}
