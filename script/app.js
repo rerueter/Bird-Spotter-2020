@@ -30,7 +30,7 @@ const buildField=(size)=>{
 buildField(game.size)
 
 //===coord gen for putting birds on things===//
-locator =(num)=>{
+locator=(num)=>{
   return Math.floor(Math.random()*num)+1; //rndm based on num input
 }
 
@@ -76,13 +76,29 @@ const birdBounce=()=>{
     $('.kiwi').toggleClass(`animated bounce infinite`);
 }
 
+
+// actually a nightmare, not fun. 
+//FIXME apply this to the specific bird per loop iteration!!
+const funBirds =()=>{
+ for(let i=1;i<game.size;i+=locator(4)){
+   paboi(i);
+  //  $('.bird').eq(i).addClass(`animated bounce infinite delay-${Math.floor(Math.random()*2)}s`);
+  };
+  // $('.bird').each().addClass(`animated bounce infinite delay-${Math.floor(Math.random()*2)}s`);
+  $.each($('.bird'), (elm)=>{
+   
+    const randomDelay = Math.floor(Math.random()*10)
+    console.log({elm,randomDelay});
+    $('.bird').eq(elm).addClass(`animated bounce infinite delay-${randomDelay}s`);
+  })
+}
 //===Listeners===//
 // start button
 $('#start').on('click', ()=>{
   $('#splash').toggleClass('slideOutUp');
 })
 // bird bouncer
-$('#btn-animate').on('click', birdBounce);
+$('#btn-animate').on('click', funBirds);
 // clock listener
 $('#btn-timer').on('click', startClock);
 
@@ -98,11 +114,3 @@ $('body').on('click', '.bird', ()=>{
 
 
 
-
-
-// actually a nightmare, not fun. 
-const funBirds =()=>{
- for(let i=1;i<game.length;i+=locator(4)){
-   paboi(i);
- }
-}
