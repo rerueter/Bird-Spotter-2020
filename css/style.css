@@ -1,28 +1,45 @@
+@font-face{
+  font-family:'National Park Regular';
+  src:url('/fonts/nationalpark-regular-webfont.woff') format('opentype');
+}
+@font-face{
+  font-family:'National Park Heavy';
+  src:url('/fonts/nationalpark-Heavy-webfont.woff') format('opentype');
+}
+
 body{
-  background-color: #f1f1f1;
+  background-color: #213A1B;
   font-family: 'Courier New'; 
   margin: 0px;
   padding: 0px;
   display: flex;
   justify-content: center;
-  
+
+}
+main{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 header{
+  margin-top:6vh;
   padding: 0 .25vh;
   display:flex;
   flex-direction:row;
   align-items:center;
-  justify-items:center;
+  justify-content:center;
   height: 7.5vh;
   background-color: #213A1B;
 }
 h1{
+  font-family:'National Park Regular', sans-serif;
   color: #000000;
   font-size: 50px;
   background-color:#BAE5F9;
   line-height:7vh;
   margin: 0 .25vh;
-  padding: 0 .5vh
+  padding: 0 .5vh;
+  border-radius: 2.5px;
 }
 #game_field{
   background-color: #213A1B;
@@ -31,6 +48,7 @@ h1{
   padding:.25vh;
   height:75vh;
   width:75vh;
+  border:solid 5px #C56C39;
   border-radius: 5px;
   cursor: url('../images/bino-small.png'), auto;
 }
@@ -47,16 +65,23 @@ h1{
   font-size:5vh;
 }
 /* font awesome default icon color - keep at top until replaced */
-.fas{
+/* .fas{
   color: teal;
   position:relative;
   z-index:1;
-}
+} */
 
 .bird{
   position:absolute;
   color:black;
-  z-index:0;
+  z-index:1;
+}
+.foreground{
+  position:relative;
+  z-index:2;
+}
+.rustle{
+  /* animation class placeholder  */
 }
 .rock{
   color: #C56C39;
@@ -66,6 +91,21 @@ h1{
 }
 .tree{
   color: #56903A;
+}
+.logo{
+font-size: 4vh;
+}
+
+#btn-animate{
+  font-family:'National Park Regular', sans-serif;
+  letter-spacing:2px;
+  background-color:#BAE5F9;
+  border-radius:2px;
+  padding:5px;
+  font-size:20px;
+  margin-top:.25vh;
+  height:5vh;
+  width:10vh;
 }
 /* .fa-crow{
   color:black;

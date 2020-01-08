@@ -20,28 +20,44 @@ const paboi =()=>{
   // uses position to select .cover element to act upon
   const $target = $('.cover').eq(position).addClass('target')
   const $cover_active = $($target).children().eq(0);
-  // console.log($target);
+  // bring icon to foreground
+  $cover_active.addClass('foreground');
   if($cover_active.hasClass('rock')){
     $('.target').append(`<i class="bird crow fas fa-crow"></i>`); 
   }else if($cover_active.hasClass('bush')){
-    $('.target').append(`<i class="bird dove fas fa-dove"></i>`)
+    $('.target').append(`<i class="bird dove fas fa-dove"></i>`);
+    $cover_active.addClass('animated shake');
   }else if($cover_active.hasClass('tree')){
     $('.target').append(`<i class="bird kiwi fas fa-kiwi-bird"></i>`)
   }
-  $('.target').removeClass('target');
+  // $('.target').removeClass('target');
 }
 paboi();
 
 // animation tester - getting to grips w animate css
 $('#btn-animate').on('click', ()=>{
-  $('.crow').toggleClass('animated bounce infinite');
-  $('.dove').toggleClass('animated bounceOutUp slower');
-  $('.kiwi').toggleClass('animated shake slower infinite');
+  $('.crow').toggleClass(`animated bounce infinite`);
+  $('.dove').toggleClass(`animated bounce infinite`);
+  $('.kiwi').toggleClass(`animated bounce infinite`);
 });
+
+// bird click listener
+$('body').on('click', '.bird', ()=>{
+  console.log('bird spotted!')
+})
+
+
+
+
+
+
+
+
+
 
 // actually a nightmare, not fun. 
 const funBirds =()=>{
-  for(let i=0; i<100; i++){
+  for(let i=0; i<100; i+=3){
     if($('.cover').eq(i).children().eq(0).hasClass('rock')){
       $('.cover').eq(i).append(`<i class="bird crow fas fa-crow"></i>`)
     }else if($('.cover').eq(i).children().eq(0).hasClass('bush')){
