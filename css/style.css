@@ -123,51 +123,64 @@ h1{
   height:7vh;
 }
 #killScreen{
-  visibility:visible;
+  /* visibility:visible; */
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
   justify-content:center;
 
 }
 .sub-kill{
-  height:29vh;
-  width:29vh;
+  /* height:vh; */
+  width:70vh;
   border-radius:2.5px;
   background-color:#BAE5F9;
 }
 .scoreboard{
+  padding:0;
+  /* height:24vh; */
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
   font-family:National Park Regular;
   font-size:40px;
+  border-radius: 2.5px;
+  /* border-bottom: 5px solid  #213A1B; */
+  margin-bottom:5px;
 }
 .score-bird{
-  margin:0,10px;
-}
-.score-title{
-  /* position:absolute; */
+  margin:1.25px 5px;
+  font-size:4vh;
+  display:inline;
+  
 }
 .total{
+  height:5vh;
   display:flex;
   flex-direction:row;
-  justify-content:flex-start;
-  align-items:flex-end;
+  justify-content:flex-end;
+  align-items:center;
+  /* border-radius:0 0 2.5px 2.5px; */
+  border-radius:2.5px;
 }
 .score-title{
   font-family:'National Park Heavy';
   color:black;
-  font-size:40px;
-  line-height:40px;
-  margin-bottom:10px;
+  font-size:35px;
+  /* line-height:40px; */
+  margin: -5px 0px 0px 5px;
 }
 .colon{
   font-family:'Courier New';
   font-size:55px;
 }
 .score{
+font-family:'Permanent Marker',cursive;
+position:relative;
+bottom:2vh;
 font-size:80px;
-margin-left:5px;
+margin-right:10px;
+line-height:5vh;
+color:#C56C39;
 }
 #game-field{
   position:absolute;
@@ -207,14 +220,11 @@ margin-left:5px;
   position:absolute;
   color:black;
   z-index:1;
-  transition:1.5s linear;
+  /* transition:1.5s linear; */
 }
 .foreground{
   position:relative;
   z-index:2;
-}
-.rustle{
-  /* animation class placeholder  */
 }
 .rock{
   color: #C56C39;
@@ -226,7 +236,11 @@ margin-left:5px;
   color: #56903A;
 }
 .dove{
-  transition:1.5s linear;
+  /* transition-duration:1.5s;
+  transition-timing-function:  linear;
+  transform:translate(0, 0); */
+  transition: 2s linear;
+
 }
 .crow{
   transition:1.5s linear;
@@ -259,14 +273,23 @@ button{
 }
 /* Animations */
 .spook{
-  transition-delay:.75s;
-  transform:translateY(-2000%);  
+  transition-delay:.5s;
+  /* transition:1.5s linear; */
+  transform:translate(0, -2000%);  
 }
 .spook-l{
-  transition-delay:.75s;
+  transition-delay:.5s;
   transform:translate(-2000%,-2000%);  
 }
 .spook-r{
-  transition-delay:.75s;
-  transform:translate(2000%,-2000%);  
+  transition-delay:.5s;
+  transform:translate(2000%,-2000%);
+}
+.peek-l{
+  transition-delay:.5s;
+  transition:translateX(-75%);
+}
+.peek-r{
+  transition-delay:.5s;
+  transition:translateX(75%);
 }
