@@ -19,6 +19,7 @@ const game = {
     kiwi:0,
   },
   aniSpeed:['fast','','slow'],
+  spooks:['spook','spook-l','spook-r'],
 };
 
 // field generator
@@ -58,8 +59,8 @@ const paboi =(num)=>{
 //===game clock===//
 const tick=()=>{
   paboi(locator(game.size));
-  
   console.log(game.time);
+  
   document.getElementById('year').innerHTML= `${game.time}`; ////!TEMP! CHANGE THIS////
   if(game.time<=0){
     clearInterval(gameClock);
@@ -108,7 +109,8 @@ $('#start').on('click', ()=>{
   $('#logo').addClass('animated bounce');
   $('#splash').toggleClass('fadeOut');
   $('.bird').remove();
-  startClock();
+  setTimeout(function(){$('#splash').remove()},2000)
+  //FIXME startClock();
 })
 // bird bouncer
 $('#btn-animate').on('click', funBirds);
@@ -121,7 +123,15 @@ $('body').on('click', '.bird', ()=>{
 })
 
 //===AutoStart===//
-funBirds();
+//FIXME funBirds();
+
+
+//===Sandbox===//
+const spooker=()=>{
+  const randSpook = game.spooks[Math.floor(Math.random()*game.spooks.length)];
+  console.log(randSpook);
+  $('.dove').toggleClass(`${randSpook}`)
+}
 
 
 

@@ -148,6 +148,7 @@ p{
   position:absolute;
   color:black;
   z-index:1;
+  transition:1.5s linear;
 }
 .foreground{
   position:relative;
@@ -182,12 +183,21 @@ button{
   margin-top:.25vh;
   height:5vh;
   width:10vh;
+  cursor:pointer;
 }
 .hidden{
   visibility:hidden;
 }
 /* Animations */
-.peek{
-  transform:translateX(60%);
-  transition:.1s linear;
+.spook{
+  transition-delay:.5s;
+  transform:translateY(-2000%);  
+}
+.spook-l{
+  transition-delay:.5s;
+  transform:translate(-2000%,-2000);  
+}
+.spook-r{
+  transition-delay:.5s;
+  transform:translate(2000%,-2000);  
 }
