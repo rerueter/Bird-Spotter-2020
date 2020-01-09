@@ -8,9 +8,9 @@ const game = {
   round:1,
   p1:{
     score:0,
-    doves:3,
-    crows:2,
-    kiwis:1,
+    doves:0,
+    crows:0,
+    kiwis:0,
   },
   p2:{
     score:0,
@@ -58,7 +58,6 @@ const paboi =(position)=>{
     setTimeout(function(){$('.dove').addClass(`${spooker()}`)},100);
   }else if($cover_active.hasClass('tree')){
     $('.target').append(`<i class="bird crow fas fa-crow"></i>`);
-    // setTimeout(function(){$('.crow').addClass(`${peeker()}`)},100); 
     setTimeout(peeker,100); 
   };
   // cleanup
@@ -80,7 +79,7 @@ const tick=()=>{
     document.getElementById('countdown').innerHTML= `Time!`;
     if(game.round===1){
 //NOTE calls scorecard
-      // tally(game.p1);
+      tally(game.p1);
     }
     return
   };
@@ -106,7 +105,7 @@ const funBirds =()=>{
   })
 }
 
-//===Sandbox===//
+//===Sandbox===//NOTE ANIMATIONS
 const spooker=()=>{
   const randSpook = game.spooks[Math.floor(Math.random()*game.spooks.length)];
   console.log(randSpook);
@@ -120,10 +119,13 @@ const peeker=()=>{
 //NOTE ALT function
   $('.crow').addClass(randPeek);
   setTimeout(function(){
-    $('.crow').addClass(randPeek)
+    $('.crow').removeClass(randPeek)
   },1000);
-
-  
+}
+const scooter=()=>{
+  const randScoot = game.scoots[Math.floor(Math.random()*game.scoots.length)];
+  console.log(randScoot);
+  $('.kiwi').addClass(randScoot);
 }
 const startSplash=()=>{
   $('main').append(`<section id="startScreen" class="splash animated fadeIn delay-1s">
@@ -138,7 +140,7 @@ const startSplash=()=>{
 </section>`)
 }
 const tally=(player)=>{
-  $('main').append(`      <section id="killScreen"class="splash animated fadeIn delay-2s">
+  $('main').append(`      <section id="killScreen"class="splash animated fadeIn delay-1s">
   <div class="sub-kill scoreboard">
     <p class="score-title">B I R D S . S P O T T E D</p>
     <div id="p1Crows"></div>
@@ -150,43 +152,50 @@ const tally=(player)=>{
     <p class="score"></p>         
   </div>
 </section>`);
-  setTimeout(funBirds,2000);
+
+
+  funBirds()
+
+
   for(let i=player.crows;i>0;i--){
-    $('#p1Crows').append(`${game.crow}`);
-    $('#p1Crows').children().addClass('score-bird');
+    setTimeout(function(){
+      $('#p1Crows').append(`${game.crow}`);
+      $('#p1Crows').children().addClass('score-bird animated zoomIn fast');
+    },500);
   }
   for(let i=player.doves;i>0;i--){
     $('#p1Doves').append(`${game.dove}`);
-    $('#p1Doves').children().addClass('score-bird');
+    $('#p1Doves').children().addClass('score-bird animated zoomIn fast');
   }
   for(let i=player.kiwis;i>0;i--){
     $('#p1Kiwis').append(`${game.kiwi}`);
-    $('#p1Kiwis').children().addClass('score-bird');
+    $('#p1Kiwis').children().addClass('score-bird animated zoomIn fast');
   }
-  // $('#p1Doves').html(`${game.p1.doves}`);
-  // $('#p1Kiwis').html(`${game.p1.kiwis}`);
+
   $('.score').html(`${player.score}`).addClass('animated fadeIn')
 }
 
 //===Listeners===//
 
 // start button
-$('#start').on('click', ()=>{
+$('body').on('click', '#start', ()=>{
   $('#logo').addClass('animated bounce');
   $('#startScreen').toggleClass('fadeOut');
   $('.bird').remove();
   setTimeout(function(){$('#startScreen').remove()},2000)
 //NOTE begins startclock, ticks
-//  startClock();
+  startClock();
 })
-// bird bouncer
+// Animate
 $('#btn-animate').on('click', spooker);
-// clock listener
+// Timer
+$('#btn-animate').on('click', spooker);
+// Fun
 $('#btn-fun').on('click', ()=>tally(game.p1));
 
 // bird click listener
 //FIXME MAKE THESE ACCEPT ARGUMENTS IF YOU HAVE TIME. CURRENTLY EXTREMELY WET.
-$('body').on('click', '.crow', ()=>{
+$('body').on('mouseenter', '.crow', ()=>{
   console.log('crow click')
   if(game.round===1){
     game.p1.crows++;
@@ -197,7 +206,7 @@ $('body').on('click', '.crow', ()=>{
     game.p2.score+=4;
   };
 })
-$('body').on('click', '.dove', ()=>{
+$('body').on('mouseenter', '.dove', ()=>{
   console.log('dove click')
   if(game.round===1){
     game.p1.doves++
@@ -208,7 +217,7 @@ $('body').on('click', '.dove', ()=>{
     game.p2.doves+=6;
   };
 })
-$('body').on('click', '.kiwi', ()=>{
+$('body').on('mouseenter', '.kiwi', ()=>{
   console.log('kiwi click')
   if(game.round===1){
     game.p1.kiwis++;

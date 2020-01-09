@@ -296,12 +296,10 @@ button{
 }
 
 .scoot-l{
- transform:translateX(2000%) 
+  transition-delay:.75s;
+  transform:translateX(2000%); 
 }
 .scoot-r{
-  transform:translateX(-2000%)
-}
-.moved {
-  transform: translate(10px); /* Equal to translateX(10px) */
-  background-color: pink;
+  transition-delay:.75s;
+  transform:translateX(-2000%);
 }
