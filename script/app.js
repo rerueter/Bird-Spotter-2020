@@ -37,48 +37,45 @@ locator=(num)=>{
 }
 
 //=== put a bird on (behind) it===//
-const paboi =(num)=>{
-  const position = num;
-  const $target = $('.tile').eq(position).addClass('target'); //select .tile element
-  const $cover_active = $($target).children().eq(0); //select cover element
+const paboi =(position)=>{
+  //const position = num;
+  const $target = $('.tile').eq(position).addClass('target'); //select tile element
+  const $cover_active = $($target).children().eq(0); //select child cover element
   
-  $cover_active.addClass('foreground'); //sets class to increase active cover z-index // need to disable after animation
+  $cover_active.addClass('foreground'); //sets class to increase active cover z-index 
   
-  //place bird according to cover type
+  //places bird according to cover type
   if($cover_active.hasClass('rock')){
-    $('.target').append(`<i class="bird crow fas fa-crow"></i>`); 
+    $('.target').append(`<i class="bird kiwi fas fa-kiwi-bird"></i>`);
   }else if($cover_active.hasClass('bush')){
     $('.target').append(`<i class="bird dove fas fa-dove"></i>`);
   }else if($cover_active.hasClass('tree')){
-    $('.target').append(`<i class="bird kiwi fas fa-kiwi-bird"></i>`);
+    $('.target').append(`<i class="bird crow fas fa-crow"></i>`); 
   };
+  // cleanup
   $('.target').removeClass('target');
   setTimeout(function(){$cover_active.removeClass('foreground')},1000);
 }
 
 //===game clock===//
 const tick=()=>{
-  paboi(locator(game.size));
-  console.log(game.time);
-  
-  document.getElementById('year').innerHTML= `${game.time}`; ////!TEMP! CHANGE THIS////
+  if(game.time!==0 && game.time%2===0){
+    paboi(locator(game.size));
+    setTimeout(function() {const birds = $('.bird').eq(0).remove()},1800);
+    console.log(game.time);
+  }
+  document.getElementById('countdown').innerHTML= `${game.time}`;
   if(game.time<=0){
     clearInterval(gameClock);
-    document.getElementById('year').innerHTML= `Time!`;
+    document.getElementById('countdown').innerHTML= `Time!`;
     return
   };
   game.time -= 1;
-  //FIXME need to make this apply to the current bird. maybe sore current bird in game object.
-  setTimeout(
-    function() {
-      const birds = $('.bird').eq(0).remove();
-      // const birds = $('.bird');
-      console.log(birds);
-  },1500);
+  //sweeps current bird from field
 };
 
 const startClock=()=>{
-  gameClock = setInterval(tick,2000);
+  gameClock = setInterval(tick,1000);
 }
 //===Bird Bouncer===//
 const birdBounce=()=>{  
@@ -105,8 +102,12 @@ const funBirds =()=>{
 //===Sandbox===//
 const spooker=()=>{
   const randSpook = game.spooks[Math.floor(Math.random()*game.spooks.length)];
+  // return randSpook;
   console.log(randSpook);
   $('.dove').addClass(`${randSpook}`)
+}
+const peeker=()=>{
+
 }
 
 //===Listeners===//
@@ -130,7 +131,7 @@ $('body').on('click', '.bird', ()=>{
 })
 
 //===AutoStart===//
-funBirds();
+//FIXME funBirds();
 
 
 

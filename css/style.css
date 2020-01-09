@@ -37,7 +37,8 @@ header{
   border-radius:2.5px;
 }
 
-#splash{
+.splash{
+  /* visibility:hidden; */
   position:absolute;
   display:flex;
   flex-direction:column;
@@ -53,10 +54,11 @@ header{
 }
 .logobar{
   /* position:relative; */
-  display:inline-flex;
+  display:flex;
   flex-direction:row;
   justify-content:center;
-  margin-top:5px;
+  /* margin-top:5px; */
+  width:675px;
 }
 h1{
   font-family:'National Park Heavy';
@@ -78,17 +80,18 @@ h1{
   height:7vh;
 }
 .menubar{
-  cursor:pointer;
+  cursor:arrow;
   display:flex;
   justify-content:space-evenly;
   align-items:center;
-  width:70vh;
+  width:668px;
   height:7vh;
+  line-height:7vh;
   background-color: #BAE5F9;
-  margin-top:5px;
+  margin-top:2.5px;
   border-radius:2.5px;
 }
-p{
+.menubar p{
   font-family:'National Park Regular';
   font-size:40px;
   line-height:7vh;
@@ -97,6 +100,7 @@ p{
   font-size:30px;
   height:7vh;
   line-height:7vh;
+  cursor:pointer;
 }
 .flight-anchors{
   width:100vw;
@@ -111,8 +115,31 @@ p{
   background-color:#C56C39;
   border-radius:.5vh;
 }
+#countdown{
+  font-family:'Permanent Marker', cursive;
+  color:#C56C39;
+  font-size:70px;
+  height:7vh;
+}
+#killScreen{
+  visibility:visible;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+
+}
+.sub-kill{
+  height:29vh;
+  width:29vh;
+  border-radius:2.5px;
+  background-color:#BAE5F9;
+}
+.scoreboard{
+  
+}
 #game-field{
   position:absolute;
+  margin:auto;
   top:12.5vh;
   background-color: #213A1B;
   display:flex;
@@ -200,14 +227,14 @@ button{
 }
 /* Animations */
 .spook{
-  transition-delay:5s;
+  transition-delay:.75s;
   transform:translateY(-2000%);  
 }
 .spook-l{
-  transition-delay:5s;
+  transition-delay:.75s;
   transform:translate(-2000%,-2000%);  
 }
 .spook-r{
-  transition-delay:5s;
+  transition-delay:.75s;
   transform:translate(2000%,-2000%);  
 }
