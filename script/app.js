@@ -9,8 +9,8 @@ const game = {
   p1:{
     score:0,
     doves:3,
-    crows:0,
-    kiwis:0,
+    crows:2,
+    kiwis:1,
   },
   p2:{
     score:0,
@@ -62,7 +62,7 @@ const paboi =(position)=>{
   };
   // cleanup
   $('.target').removeClass('target');
-  setTimeout(function(){$cover_active.removeClass('foreground')},1500);
+  setTimeout(function(){$cover_active.removeClass('foreground')},1900);
 }
 
 //===game clock===//
@@ -70,7 +70,7 @@ const tick=()=>{
   if(game.time!==0 && game.time%2===0){
     paboi(locator(game.size));
     //sweeps current bird from field
-    //FIXME setTimeout(function() {const birds = $('.bird').eq(0).remove()},1800);
+    setTimeout(function() {const birds = $('.bird').eq(0).remove()},1800);
     console.log(game.time);
   }
   document.getElementById('countdown').innerHTML= `${game.time}`;
@@ -124,7 +124,7 @@ const peeker=()=>{
   return randPeek;
 }
 const tally=(player)=>{
-  $('main').append(`      <section id="killScreen"class="splash">
+  $('main').append(`      <section id="killScreen"class="splash animated fadeIn delay-2s">
   <div class="sub-kill scoreboard">
     <p class="score-title">B I R D S . S P O T T E D</p>
     <div id="p1Crows"></div>
@@ -135,7 +135,7 @@ const tally=(player)=>{
     <p class="score-title">S C O R E<span class='colon'>:</span></p>
     <p class="score"></p>         
   </div>
-</section>`)
+</section>`);
   for(let i=player.crows;i>0;i--){
     $('#p1Crows').append(`${game.crow}`);
     $('#p1Crows').children().addClass('score-bird');
@@ -158,7 +158,7 @@ const tally=(player)=>{
 // start button
 $('#start').on('click', ()=>{
   $('#logo').addClass('animated bounce');
-  $('.splash').toggleClass('fadeOut');
+  $('#startScreen').toggleClass('fadeOut');
   $('.bird').remove();
   setTimeout(function(){$('#startScreen').remove()},2000)
   startClock();
@@ -205,7 +205,7 @@ $('body').on('click', '.kiwi', ()=>{
 })
 
 //===AutoStart===//
-// funBirds();
+funBirds();
 
 
 
