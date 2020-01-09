@@ -39,6 +39,7 @@ header{
 
 .splash{
   /* visibility:hidden; */
+  font-family:'Permanent Marker', cursive;
   position:absolute;
   display:flex;
   flex-direction:column;
@@ -135,7 +136,31 @@ h1{
   background-color:#BAE5F9;
 }
 .scoreboard{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
   
+}
+.total{
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-start;
+  align-items:flex-end;
+}
+.score-title{
+  font-family:'National Park Heavy';
+  color:black;
+  font-size:40px;
+  line-height:40px;
+  margin-bottom:10px;
+}
+.colon{
+  font-family:'Courier New';
+  font-size:55px;
+}
+.score{
+font-size:80px;
+margin-left:5px;
 }
 #game-field{
   position:absolute;

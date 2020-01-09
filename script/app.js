@@ -6,17 +6,21 @@ const game = {
   size:100,
   time:30,
   cover:['<i class="rock fas fa-mountain"></i>','<i class="tree fas fa-tree"></i>','<i class="bush fas fa-spa"></i>'],
+  crow:`<i class="crow fas fa-crow"></i>`,
+  dove:`<i class="dove fas fa-dove"></i>`,
+  kiwi:`<i class="kiwi fas fa-kiwi-bird"></i>`,
+
   p1:{
-    score:0,
-    doves:0,
-    crows:0,
-    kiwi:0,
+    score:67,
+    doves:5,
+    crows:4,
+    kiwis:3,
   },
   p2:{
     score:0,
     doves:0,
     crows:0,
-    kiwi:0,
+    kiwis:0,
   },
   aniSpeed:['fast','','slow'],
   spooks:['spook','spook-l','spook-r'],
@@ -108,6 +112,20 @@ const spooker=()=>{
 }
 const peeker=()=>{
 
+}
+const tally=()=>{
+  for(let i=game.p1.crows;i>0;i--){
+    $('#p1Crows').append(`${game.crow}`);
+  }
+  for(let i=game.p1.doves;i>0;i--){
+    $('#p1Doves').append(`${game.dove}`);
+  }
+  for(let i=game.p1.kiwis;i>0;i--){
+    $('#p1Kiwis').append(`${game.kiwi}`);
+  }
+  // $('#p1Doves').html(`${game.p1.doves}`);
+  // $('#p1Kiwis').html(`${game.p1.kiwis}`);
+  $('.score').html(`${game.p1.score}`).addClass('animated fadeIn')
 }
 
 //===Listeners===//
