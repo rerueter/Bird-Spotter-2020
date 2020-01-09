@@ -54,11 +54,11 @@ const paboi =(position)=>{
   if($cover_active.hasClass('rock')){
     $('.target').append(`<i class="bird kiwi fas fa-kiwi-bird"></i>`);
   }else if($cover_active.hasClass('bush')){
-    $('.target').append(`<i class="bird dove fas fa-dove"></i>`).addClass('animated shake faster');
+    $('.target').append(`<i class="bird dove fas fa-dove"></i>`);
     setTimeout(function(){$('.dove').addClass(`${spooker()}`)},100);
   }else if($cover_active.hasClass('tree')){
     $('.target').append(`<i class="bird crow fas fa-crow"></i>`);
-    setTimeout(function(){$('.crow').addClass(`${peeker()}`)},100); 
+    setTimeout(function(){$('.crow').addClass(`peek-r`)},100); 
   };
   // cleanup
   $('.target').removeClass('target');
@@ -69,8 +69,8 @@ const paboi =(position)=>{
 const tick=()=>{
   if(game.time!==0 && game.time%2===0){
     paboi(locator(game.size));
-    //sweeps current bird from field
-    setTimeout(function() {const birds = $('.bird').eq(0).remove()},1800);
+//NOTE vv sweeps current bird from field vv
+    // setTimeout(function() {const birds = $('.bird').eq(0).remove()},1800);
     console.log(game.time);
   }
   document.getElementById('countdown').innerHTML= `${game.time}`;
@@ -78,7 +78,8 @@ const tick=()=>{
     clearInterval(gameClock);
     document.getElementById('countdown').innerHTML= `Time!`;
     if(game.round===1){
-      tally(game.p1);
+//NOTE calls scorecard
+      // tally(game.p1);
     }
     return
   };
@@ -123,6 +124,18 @@ const peeker=()=>{
   console.log(randPeek);
   return randPeek;
 }
+const startSplash=()=>{
+  $('main').append(`<section id="startScreen" class="splash animated fadeIn delay-1s">
+  <div class="logobar">
+    <div class="tile"><i class="fas fa-crow" id='logo'></i></div>
+    <h1>B I R D <i class="fas fa-binoculars"></i> S P O T T E R <span id="year">2020</span></h1>
+  </div>
+  <div class=menubar>
+    <p>Click birds to spot them!</p>
+    <p id="start">Start!</p>
+  </div>
+</section>`)
+}
 const tally=(player)=>{
   $('main').append(`      <section id="killScreen"class="splash animated fadeIn delay-2s">
   <div class="sub-kill scoreboard">
@@ -161,7 +174,8 @@ $('#start').on('click', ()=>{
   $('#startScreen').toggleClass('fadeOut');
   $('.bird').remove();
   setTimeout(function(){$('#startScreen').remove()},2000)
-  startClock();
+//NOTE begins startclock, ticks
+//  startClock();
 })
 // bird bouncer
 $('#btn-animate').on('click', spooker);
@@ -205,8 +219,8 @@ $('body').on('click', '.kiwi', ()=>{
 })
 
 //===AutoStart===//
-funBirds();
-
+//funBirds();
+//startSplash();
 
 
 

@@ -221,7 +221,7 @@ color:#C56C39;
   position:absolute;
   color:black;
   z-index:1;
-  /* transition:1.5s linear; */
+  transition:1.5s linear;
 }
 .foreground{
   position:relative;
@@ -288,9 +288,13 @@ button{
 }
 .peek-l{
   transition-delay:.5s;
-  transition:translateX(-75%);
+  transition:translate(-75%,0);
 }
 .peek-r{
   transition-delay:.5s;
-  transition:translateX(75%);
+  transition:translate(75%,0);
+}
+
+.scoot{
+ transition:translateX(50%) 
 }
