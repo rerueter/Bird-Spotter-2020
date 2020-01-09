@@ -58,8 +58,7 @@ const paboi =(position)=>{
     setTimeout(function(){$('.dove').addClass(`${spooker()}`)},100);
   }else if($cover_active.hasClass('tree')){
     $('.target').append(`<i class="bird crow fas fa-crow"></i>`);
-    // setTimeout(function(){$('.crow').addClass(`${peeker()}`)},100); 
-    setTimeout(peeker,100); 
+    setTimeout(function(){$('.crow').addClass(`${peeker()}`)},100); 
   };
   // cleanup
   $('.target').removeClass('target');
@@ -89,7 +88,8 @@ const tick=()=>{
 
 const startClock=()=>{
   gameClock = setInterval(tick,1000);
-}
+
+
 //===Animation Speed Randomizer for funBirds===//
 const speed=()=>{
   return game.aniSpeed[Math.floor(Math.random()*game.aniSpeed.length)];
@@ -121,7 +121,7 @@ const peeker=()=>{
   $('.crow').addClass(randPeek);
   setTimeout(function(){
     $('.crow').addClass(randPeek)
-  },1000);
+  },1200);
 
   
 }
@@ -150,7 +150,6 @@ const tally=(player)=>{
     <p class="score"></p>         
   </div>
 </section>`);
-  setTimeout(funBirds,2000);
   for(let i=player.crows;i>0;i--){
     $('#p1Crows').append(`${game.crow}`);
     $('#p1Crows').children().addClass('score-bird');

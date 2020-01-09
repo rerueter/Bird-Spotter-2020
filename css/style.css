@@ -244,7 +244,7 @@ color:#C56C39;
 
 }
 .crow{
-  transition:1.5s linear;
+  transition:.25s linear;
 }
 .kiwi{
   transition:1.5s linear;
@@ -288,13 +288,20 @@ button{
 }
 .peek-l{
   transition-delay:.5s;
-  transition:translate(-75%,0);
+  transform:translate(-50%,0);
 }
 .peek-r{
   transition-delay:.5s;
-  transition:translate(75%,0);
+  transform:translate(50%,0);
 }
 
-.scoot{
- transition:translateX(50%) 
+.scoot-l{
+ transform:translateX(2000%) 
+}
+.scoot-r{
+  transform:translateX(-2000%)
+}
+.moved {
+  transform: translate(10px); /* Equal to translateX(10px) */
+  background-color: pink;
 }
