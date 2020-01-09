@@ -113,15 +113,16 @@ const spooker=()=>{
 const peeker=()=>{
 
 }
+//FIXME SCORE-BIRD BEING ADDED TO #p1*birds* instead of the birdicons
 const tally=()=>{
   for(let i=game.p1.crows;i>0;i--){
-    $('#p1Crows').append(`${game.crow}`);
+    $('#p1Crows').append(`${game.crow}`).addClass('score-bird');
   }
   for(let i=game.p1.doves;i>0;i--){
-    $('#p1Doves').append(`${game.dove}`);
+    $('#p1Doves').append(`${game.dove}`).addClass('score-bird');
   }
   for(let i=game.p1.kiwis;i>0;i--){
-    $('#p1Kiwis').append(`${game.kiwi}`);
+    $('#p1Kiwis').append(`${game.kiwi}`).addClass('score-bird');
   }
   // $('#p1Doves').html(`${game.p1.doves}`);
   // $('#p1Kiwis').html(`${game.p1.kiwis}`);

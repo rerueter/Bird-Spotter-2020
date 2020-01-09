@@ -139,7 +139,14 @@ h1{
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
-  
+  font-family:National Park Regular;
+  font-size:40px;
+}
+.score-bird{
+  margin:0,10px;
+}
+.score-title{
+  /* position:absolute; */
 }
 .total{
   display:flex;
