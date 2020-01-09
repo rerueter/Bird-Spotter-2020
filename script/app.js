@@ -53,6 +53,7 @@ const paboi =(position)=>{
   //places bird according to cover type
   if($cover_active.hasClass('rock')){
     $('.target').append(`<i class="bird kiwi fas fa-kiwi-bird"></i>`);
+    setTimeout(scooter,100);
   }else if($cover_active.hasClass('bush')){
     $('.target').append(`<i class="bird dove fas fa-dove"></i>`);
     setTimeout(function(){$('.dove').addClass(`${spooker()}`)},100);
@@ -182,7 +183,7 @@ $('body').on('click', '#start', ()=>{
   $('#logo').addClass('animated bounce');
   $('#startScreen').toggleClass('fadeOut');
   $('.bird').remove();
-  setTimeout(function(){$('#startScreen').remove()},2000)
+  setTimeout(function(){$('#startScreen').remove()},2000);
 //NOTE begins startclock, ticks
   startClock();
 })
@@ -197,41 +198,25 @@ $('#btn-fun').on('click', ()=>tally(game.p1));
 //FIXME MAKE THESE ACCEPT ARGUMENTS IF YOU HAVE TIME. CURRENTLY EXTREMELY WET.
 $('body').on('mouseenter', '.crow', ()=>{
   console.log('crow click')
-  if(game.round===1){
     game.p1.crows++;
-    game.p1.score+=4;
-  };
-  if(game.round===2){
-    game.p2.crows++;
-    game.p2.score+=4;
-  };
+    game.score+=2;
 })
 $('body').on('mouseenter', '.dove', ()=>{
-  console.log('dove click')
-  if(game.round===1){
-    game.p1.doves++
-    game.p1.score+=6
-  };
-  if(game.round===2){
-    game.p2.doves++;
-    game.p2.doves+=6;
-  };
+  console.log('dove click');
+    game.p1.doves++;
+    game.score+=3
+
 })
 $('body').on('mouseenter', '.kiwi', ()=>{
-  console.log('kiwi click')
-  if(game.round===1){
+  console.log('kiwi click')  
     game.p1.kiwis++;
-    game.p1.score+=2;
-  };
-  if(game.round===2){
-    game.p2.kiwis++
-    game.p2.score+2
-  };
+    game.score+=4;
+
 })
 
 //===AutoStart===//
 //funBirds();
-//startSplash();
+startSplash();
 
 
 

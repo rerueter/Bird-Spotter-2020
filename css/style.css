@@ -155,7 +155,7 @@ h1{
   
 }
 .total{
-  height:5vh;
+  height:7vh;
   display:flex;
   flex-direction:row;
   justify-content:flex-end;
@@ -247,7 +247,7 @@ color:#C56C39;
   transition:.25s linear;
 }
 .kiwi{
-  transition:1.5s linear;
+  transition:1s linear;
 }
 
 .logo{
