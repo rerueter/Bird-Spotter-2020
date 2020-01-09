@@ -21,20 +21,22 @@
   <main>
     <header>
     </header>
-    <section id="splash" class="animated fadeIn delay-1s">
-      <div class="logobar">
-        <div class="tile logo"><i class="logo fas fa-crow"></i></div>
-        <h1>B I R D <i class="fas fa-binoculars"></i> S P O T T E R <span id="year">2020</span></h1>
-      </div>
-      
+      <section class='flight-anchors'>
+        <div class="f-anchor" id="fAA"></div>
+        <div class="f-anchor" id="fAB"></div>
+        <div class="f-anchor" id="fAC"></div>
+      </section>
+      <section id="splash" class="animated fadeIn delay-1s">
+        <div class="logobar">
+          <div class="tile"><i class="fas fa-crow" id='logo'></i></div>
+          <h1>B I R D <i class="fas fa-binoculars"></i> S P O T T E R <span id="year">2020</span></h1>
+        </div>
         <div class=menubar>
           <p>Click birds to spot them!</p>
-          <button id="start">Start!</button>
-
+          <p id="start">Start!</p>
         </div>
-      
-    </section>
-      <section id="game_field"></section>
+      </section>
+      <section id="game-field"></section>
       <section class="buttons">
         <button id="btn-animate">Animate</button>
         <button id="btn-timer">Timer</button>

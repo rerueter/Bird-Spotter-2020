@@ -25,7 +25,7 @@ const game = {
 const buildField=(size)=>{
   for(let i=1; i<=size; i++){
     let coverType = game.cover[Math.floor(Math.random()*3)]
-    $('#game_field').append(`<div class="tile">${coverType}</div>`)
+    $('#game-field').append(`<div class="tile">${coverType}</div>`)
   };
 };
 buildField(game.size)
@@ -49,14 +49,16 @@ const paboi =(num)=>{
   }else if($cover_active.hasClass('bush')){
     $('.target').append(`<i class="bird dove fas fa-dove"></i>`);
   }else if($cover_active.hasClass('tree')){
-    $('.target').append(`<i class="bird kiwi fas fa-kiwi-bird"></i>`)
-  }
-   $('.target').removeClass('target');
+    $('.target').append(`<i class="bird kiwi fas fa-kiwi-bird"></i>`);
+  };
+  $('.target').removeClass('target');
+  setTimeout(function(){$cover_active.removeClass('foreground')},1000);
 }
 
 //===game clock===//
 const tick=()=>{
   paboi(locator(game.size));
+  
   console.log(game.time);
   document.getElementById('year').innerHTML= `${game.time}`; ////!TEMP! CHANGE THIS////
   if(game.time<=0){
@@ -65,10 +67,17 @@ const tick=()=>{
     return
   };
   game.time -= 1;
+  //FIXME need to make this apply to the current bird. maybe sore current bird in game object.
+  setTimeout(
+    function() {
+      const birds = $('.bird').eq(0).remove();
+      // const birds = $('.bird');
+      console.log(birds);
+  },1500);
 };
 
 const startClock=()=>{
-  gameClock = setInterval(tick,1000);
+  gameClock = setInterval(tick,2000);
 }
 //===Bird Bouncer===//
 const birdBounce=()=>{  
@@ -81,26 +90,24 @@ const birdBounce=()=>{
 const speed=()=>{
   return game.aniSpeed[Math.floor(Math.random()*game.aniSpeed.length)];
 }
-// actually a nightmare, not fun. 
-//FIXME apply this to the specific bird per loop iteration!!
+// populate birds for splash screen 
+
 const funBirds =()=>{
- for(let i=1;i<game.size;i+=locator(4)){
+ for(let i=1;i<game.size;i+=Math.floor(Math.random()*(5 - 2 + 1) + 2)){
    paboi(i);
-
   };
-
   $.each($('.bird'), (elm)=>{
-    const randomDelay = Math.floor(Math.random()*10)
-    console.log({elm,randomDelay});
     $('.bird').eq(elm).addClass(`animated bounce infinite ${speed()}`);
   })
 }
+
 //===Listeners===//
+
 // start button
 $('#start').on('click', ()=>{
+  $('#logo').addClass('animated bounce');
   $('#splash').toggleClass('fadeOut');
   $('.bird').remove();
-  // buildField(game.size);
   startClock();
 })
 // bird bouncer
