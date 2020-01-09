@@ -102,6 +102,13 @@ const funBirds =()=>{
   })
 }
 
+//===Sandbox===//
+const spooker=()=>{
+  const randSpook = game.spooks[Math.floor(Math.random()*game.spooks.length)];
+  console.log(randSpook);
+  $('.dove').addClass(`${randSpook}`)
+}
+
 //===Listeners===//
 
 // start button
@@ -113,7 +120,7 @@ $('#start').on('click', ()=>{
   //FIXME startClock();
 })
 // bird bouncer
-$('#btn-animate').on('click', funBirds);
+$('#btn-animate').on('click', spooker);
 // clock listener
 $('#btn-timer').on('click', startClock);
 
@@ -123,15 +130,10 @@ $('body').on('click', '.bird', ()=>{
 })
 
 //===AutoStart===//
-//FIXME funBirds();
+funBirds();
 
 
-//===Sandbox===//
-const spooker=()=>{
-  const randSpook = game.spooks[Math.floor(Math.random()*game.spooks.length)];
-  console.log(randSpook);
-  $('.dove').toggleClass(`${randSpook}`)
-}
+
 
 
 

@@ -90,7 +90,7 @@ h1{
 }
 p{
   font-family:'National Park Regular';
-  font-size:30px;
+  font-size:40px;
   line-height:7vh;
 }
 #start{
@@ -166,6 +166,16 @@ p{
 .tree{
   color: #56903A;
 }
+.dove{
+  transition:1.5s linear;
+}
+.crow{
+  transition:1.5s linear;
+}
+.kiwi{
+  transition:1.5s linear;
+}
+
 .logo{
 font-size: 4vh;
 }
@@ -190,14 +200,14 @@ button{
 }
 /* Animations */
 .spook{
-  transition-delay:.5s;
+  transition-delay:5s;
   transform:translateY(-2000%);  
 }
 .spook-l{
-  transition-delay:.5s;
-  transform:translate(-2000%,-2000);  
+  transition-delay:5s;
+  transform:translate(-2000%,-2000%);  
 }
 .spook-r{
-  transition-delay:.5s;
-  transform:translate(2000%,-2000);  
+  transition-delay:5s;
+  transform:translate(2000%,-2000%);  
 }
