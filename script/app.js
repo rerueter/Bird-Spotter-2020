@@ -6,18 +6,14 @@ const game = {
   size:100,
   time:30,
   round:1,
+  topScore:0,
   p1:{
     score:0,
     doves:0,
     crows:0,
     kiwis:0,
   },
-  p2:{
-    score:0,
-    doves:0,
-    crows:0,
-    kiwis:0,
-  },
+
   aniSpeed:['fast','','slow'],
   spooks:['spook','spook-l','spook-r'],
   peeks:['peek-l','peek-r'],
@@ -35,7 +31,7 @@ const buildField=(size)=>{
     $('#game-field').append(`<div class="tile">${coverType}</div>`)
   };
 };
-buildField(game.size)
+
 
 //===coord gen for putting birds on things===//
 locator=(num)=>{
@@ -141,17 +137,19 @@ const startSplash=()=>{
 </section>`)
 }
 const tally=(player)=>{
-  $('main').append(`      <section id="killScreen"class="splash animated fadeIn delay-1s">
+  $('main').append(`<section id="killScreen"class="splash">
+  <section class="ks-organize">
   <div class="sub-kill scoreboard">
-    <p class="score-title">B I R D S . S P O T T E D</p>
+    <p class="board-title">B I R D S&#160&#160S P O T T E D</p>
     <div id="p1Crows"></div>
     <div id="p1Doves"></div>
     <div id="p1Kiwis"></div>
   </div>
   <div class="sub-kill total">
-    <p class="score-title">S C O R E<span class='colon'>:</span></p>
+    <p class="score-title">S C O R E <span class='colon'>:</span></p>
     <p class="score"></p>         
   </div>
+  </section>
 </section>`);
 
 
@@ -195,28 +193,29 @@ $('#btn-animate').on('click', spooker);
 $('#btn-fun').on('click', ()=>tally(game.p1));
 
 // bird click listener
-//FIXME MAKE THESE ACCEPT ARGUMENTS IF YOU HAVE TIME. CURRENTLY EXTREMELY WET.
+//FIXME condense these. CURRENTLY EXTREMELY WET.
 $('body').on('mouseenter', '.crow', ()=>{
   console.log('crow click')
     game.p1.crows++;
-    game.score+=2;
+    game.p1.score+=2;
 })
 $('body').on('mouseenter', '.dove', ()=>{
   console.log('dove click');
     game.p1.doves++;
-    game.score+=3
+    game.p1.score+=3
 
 })
 $('body').on('mouseenter', '.kiwi', ()=>{
   console.log('kiwi click')  
     game.p1.kiwis++;
-    game.score+=4;
+    game.p1.score+=4;
 
 })
 
 //===AutoStart===//
+buildField(game.size);
 //funBirds();
-startSplash();
+//startSplash();
 
 
 
