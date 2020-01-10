@@ -211,7 +211,7 @@ boardUpdater=()=>{
 };
 
 /*
-NOTE ===Compare Score to Top and Update if >===
+NOTE ===Top = Score if Score >= Top===
 */
 const scoreChecker=()=>{
   if(game.p1.score>game.topScore){
@@ -280,8 +280,6 @@ $("body").on('mouseover','.bird', function(event){
 /*
 NOTE ===AutoStart===
 */
-
-
 startSplash();
 
 
