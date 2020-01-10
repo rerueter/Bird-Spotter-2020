@@ -8,10 +8,8 @@
 
   A sample round of gameplay:
     
-  (1) landing splash / title with brief objective desctiption (spot birds by clicking on them! spot as many as you can before time is up!) and 'start' button
-    
-    player clicks 'begin' button
-    
+  (1) landing splash / title with brief objective description (spot birds by clicking on them! spot as many as you can before time is up!) and 'start' button. Player clicks 'Start'.
+       
   (2) field of play appears: 10x10 grid of various cover types is drawn in randomly. The type of cover determines what sort of bird may appear from behind it. 
 
   (3) Birds begin to emerge, one at a time. Timer begins counting down from 30. A bird emerges once every two seconds and each type of bird has specific behaviors. Crows will *peek* from behind trees, left or right. Doves will *spook* from bushes, diagonally up and left, straight up, or diagonally up and right. Kiwis will *hop* behind their cover and then *scoot* left or right. One bird will appear on screen at a time and leave / be removed before the next appears. 
