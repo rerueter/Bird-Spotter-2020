@@ -20,3 +20,19 @@
 <cursor>
 //binoculars
 <i class="fas fa-binoculars"></i>
+
+<colors>
+//diamond
+#BAE5F9
+
+//copper
+#C56C39
+
+//coffee
+#6F4930
+
+//may green
+#56903A
+
+//black leather jacket
+#213A1B

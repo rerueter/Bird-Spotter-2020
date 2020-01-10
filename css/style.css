@@ -158,15 +158,17 @@ h1{
   padding:0;
   display:flex;
   flex-direction:column;
+  box-sizing:border-box;
   justify-content:space-between;
   font-family:'National Park Regular';
-  font-size:40px;
+  font-size:2vh;
   height:20vh;
   border-radius: 2.5px;
   margin-bottom:5px;
+  padding-bottom:5px;
 }
 .score-bird{
-  margin:5px 7px;
+  margin:0 7px 0 10px;
   font-size:4vh;
   display:inline;
   
@@ -236,13 +238,13 @@ color:#C56C39;
 }
 .rp-bins{
   /* position:absolute; */
-  font-size:40px;
+  font-size:4vh;
 
 }
 .replay{
   cursor:pointer;
   font-family:'National Park Heavy';
-  font-size:30px;
+  font-size:2vh;
   display:flex;
   justify-content:center;
   align-items:center;
