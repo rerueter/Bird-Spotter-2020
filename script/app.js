@@ -17,9 +17,9 @@ const game = {
   peeks:['peek-l','peek-r'],
   scoots:['scoot-l','scoot-r'],
   cover:['<i class="rock fas fa-mountain"></i>','<i class="tree fas fa-tree"></i>','<i class="bush fas fa-spa"></i>'],
-  crow:`<i class="score-bird fas fa-crow"></i>`,
-  dove:`<i class="score-bird fas fa-dove"></i>`,
-  kiwi:`<i class="score-bird fas fa-kiwi-bird"></i>`,
+  crow:`<i class="score-bird animated slideInTop fas fa-crow"></i>`,
+  dove:`<i class="score-bird animated slideInTop fas fa-dove"></i>`,
+  kiwi:`<i class="score-bird animated slideInTop fas fa-kiwi-bird"></i>`,
 };
 /*
 NOTE ===Field Generator===
@@ -98,7 +98,7 @@ const funBirds =()=>{
     paboi(i);
   };
   $.each($('.bird'), (elm)=>{
-    $('.bird').eq(elm).addClass(`animated bounce infinite ${speed()}`);
+    $('.bird').eq(elm).addClass(`animated bounce infinite ${speed()}`).removeClass('crow kiwi dove');
   })
 };
 
@@ -111,7 +111,9 @@ const newGame=()=>{
   game.p1.doves=0;
   game.p1.kiwis=0;
   game.p1.score=0;
-  $('#killScreen').addClass('animated fadeOut delay-1s')
+  $('#killScreen').addClass('animated fadeOut')
+  $('#countdown').html('');
+  $('.bird').remove();
   setTimeout(function(){
     $('.tile').remove();
     $('#killScreen').remove();
@@ -140,7 +142,16 @@ const peeker=()=>{
 const scooter=()=>{
   const randScoot = game.scoots[Math.floor(Math.random()*game.scoots.length)];
   console.log(randScoot);
-  $('.kiwi').addClass(randScoot);
+  $('.kiwi').addClass('hop');
+  console.log($('.kiwi').css('transition'));
+  setTimeout(function(){
+    $('.kiwi').removeClass('hop')
+
+    console.log($('.kiwi').css('transition'));
+  },200);
+  setTimeout(function(){
+    $('.kiwi').css('transition','1s linear').addClass(randScoot);
+  },400);
 }
 const startSplash=()=>{
   buildField(game.size);
@@ -162,10 +173,10 @@ const startSplash=()=>{
 };
 const tally=(player)=>{
   $('main').append(`
-    <section id="killScreen"class="splash">
+    <section id="killScreen"class="splash animated fadeIn delay-1s">
       <section class="ks-organize">
         <div class="sub-kill scoreboard">
-          <p class="board-title">B I R D S&#160&#160S P O T T E D</p>
+          <p class="board-title">B I R D S&#160&#160S P O T T E D <span class='colon'>:</span></p>
           <div id="p1Crows"></div>
           <div id="p1Doves"></div>
           <div id="p1Kiwis"></div>
@@ -188,7 +199,6 @@ const tally=(player)=>{
 
   scoreChecker();
   funBirds();
-
 
   for(let i=player.crows;i>0;i--){
     setTimeout(function(){
@@ -222,9 +232,10 @@ $('body').on('click', '#start', ()=>{
   $('#logo').addClass('animated bounce');
   $('#startScreen').toggleClass('fadeOut');
   $('.bird').remove();
-  setTimeout(function(){$('#startScreen').remove()},2000);
-//NOTE begins startclock, ticks
-  startClock();
+  setTimeout(function(){
+    $('#startScreen').remove()
+    startClock();
+  },2000);
 })
 
 // Replay Button
@@ -233,25 +244,9 @@ $('body').on('click','.replay', ()=>{
   newGame();
 });
 
-// Animate
-$('#btn-animate').on('click', spooker);
-// Timer
-$('#btn-animate').on('click', spooker);
-// Fun
-$('#btn-fun').on('click', ()=>tally(game.p1));
 
 // bird click listener
 //FIXME condense these. CURRENTLY EXTREMELY WET.
-
-// $(".bird").on('mouseover', function() {
-//   var n = $(this).attr("class");
-//   console.log(n)
-// });
-
-$('body').on('mouseenter', '.bird', ()=>{
-  console.log($(this).children())
-});
-
 
 $('body').on('mouseenter', '.crow', ()=>{
   console.log('crow click')
@@ -269,6 +264,7 @@ $('body').on('mouseenter', '.kiwi', ()=>{
     game.p1.kiwis++;
     game.p1.score+=6;
 });
+
 
 //===AutoStart===//
 // buildField(game.size);

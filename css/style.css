@@ -183,7 +183,7 @@ h1{
 .board-title{
   font-size:50px;
   font-family:'National Park Heavy';
-  margin: -7px 20px 10px 5px;
+  margin: 0 0 0 12px;
 }
 .score-title{
   font-family:'National Park Regular';
@@ -259,7 +259,7 @@ color:#C56C39;
   width:75vh;
   border:solid 5px #C56C39;
   border-radius: 5px;
-  cursor: url('../images/bino-small.png'), auto;
+  cursor: url('../images/bino-med.png'), auto;
   overflow:hidden;
 }
 .tile{
@@ -308,10 +308,10 @@ color:#C56C39;
 
 }
 .crow{
-  transition:.25s linear;
+  transition:.15s linear;
 }
 .kiwi{
-  transition:1s linear;
+  transition:.05s linear;
 }
 
 .logo{
@@ -344,26 +344,30 @@ button{
 }
 .spook-l{
   transition-delay:.5s;
-  transform:translate(-2000%,-2000%);  
+  transform:translate(-2500%,-2500%);  
 }
 .spook-r{
   transition-delay:.5s;
-  transform:translate(2000%,-2000%);
+  transform:translate(2500%,-2500%);
 }
 .peek-l{
   transition-delay:.5s;
-  transform:translate(-50%,0);
+  transform:translate(-40%,0);
 }
 .peek-r{
   transition-delay:.5s;
-  transform:translate(50%,0);
+  transform:translate(25%,0);
+}
+.hop{
+  transform:translate(0,-10%)
 }
 
+
 .scoot-l{
-  transition-delay:.75s;
+  /* transition-delay:.5s; */
   transform:translateX(2000%); 
 }
 .scoot-r{
-  transition-delay:.75s;
+  /* transition-delay:.5s; */
   transform:translateX(-2000%);
 }
