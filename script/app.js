@@ -125,32 +125,43 @@ const scooter=()=>{
   $('.kiwi').addClass(randScoot);
 }
 const startSplash=()=>{
-  $('main').append(`<section id="startScreen" class="splash animated fadeIn delay-1s">
-  <div class="logobar">
-    <div class="tile"><i class="fas fa-crow" id='logo'></i></div>
-    <h1>B I R D <i class="fas fa-binoculars"></i> S P O T T E R <span id="year">2020</span></h1>
-  </div>
-  <div class=menubar>
-    <p>Click birds to spot them!</p>
-    <p id="start">Start!</p>
-  </div>
-</section>`)
-}
+  buildField(game.size);
+  funBirds();
+  $('main').append(`
+    <section id="startScreen" class="splash animated fadeIn delay-1s">
+      <section class='title'>
+        <div class="logobar">
+          <div class="tile sub-title"><i class="fas fa-crow" id='logo'></i></div>
+          <h1 class="sub-title">B I R D <i class="fas fa-binoculars"></i> S P O T T E R <span id="year">2020</span></h1>
+        </div>
+        <div class="menubar sub-title">
+          <p>Click birds to spot them!</p>
+          <p id="start">S T A R T !</p>
+        </div>
+      </section>
+    </section>
+  `);
+};
 const tally=(player)=>{
-  $('main').append(`<section id="killScreen"class="splash">
-  <section class="ks-organize">
-  <div class="sub-kill scoreboard">
-    <p class="board-title">B I R D S&#160&#160S P O T T E D</p>
-    <div id="p1Crows"></div>
-    <div id="p1Doves"></div>
-    <div id="p1Kiwis"></div>
-  </div>
-  <div class="sub-kill total">
-    <p class="score-title">S C O R E <span class='colon'>:</span></p>
-    <p class="score"></p>         
-  </div>
-  </section>
-</section>`);
+  $('main').append(`
+    <section id="killScreen"class="splash">
+      <section class="ks-organize">
+        <div class="sub-kill scoreboard">
+          <p class="board-title">B I R D S&#160&#160S P O T T E D</p>
+          <div id="p1Crows"></div>
+          <div id="p1Doves"></div>
+          <div id="p1Kiwis"></div>
+        </div>
+        <div class="sub-kill total">
+          <p class="score-title">TOP <span class='colon'>:</span></p>
+          <p class="top-score"></p>
+          <p class="score-title">SCORE <span class='colon'>:</span></p>
+          <p class="score"></p>
+          <p class="replay">AGAIN!<p>         
+        </div>
+      </section>
+    </section>
+  `);
 
 
   funBirds()
@@ -159,16 +170,16 @@ const tally=(player)=>{
   for(let i=player.crows;i>0;i--){
     setTimeout(function(){
       $('#p1Crows').append(`${game.crow}`);
-      $('#p1Crows').children().addClass('score-bird animated zoomIn fast');
+      $('#p1Crows').children().addClass('score-bird animated slideInTop fast');
     },500);
   }
   for(let i=player.doves;i>0;i--){
     $('#p1Doves').append(`${game.dove}`);
-    $('#p1Doves').children().addClass('score-bird animated zoomIn fast');
+    $('#p1Doves').children().addClass('score-bird animated slideInTop fast');
   }
   for(let i=player.kiwis;i>0;i--){
     $('#p1Kiwis').append(`${game.kiwi}`);
-    $('#p1Kiwis').children().addClass('score-bird animated zoomIn fast');
+    $('#p1Kiwis').children().addClass('score-bird animated slideInTop fast');
   }
 
   $('.score').html(`${player.score}`).addClass('animated fadeIn')
@@ -209,13 +220,12 @@ $('body').on('mouseenter', '.kiwi', ()=>{
   console.log('kiwi click')  
     game.p1.kiwis++;
     game.p1.score+=4;
-
 })
 
 //===AutoStart===//
-buildField(game.size);
+// buildField(game.size);
 //funBirds();
-//startSplash();
+startSplash();
 
 
 
