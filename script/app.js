@@ -1,7 +1,6 @@
-console.log('it a js')
-//variables for adjusting the dials//
-
-//game object
+/*
+NOTE ===Game State Object===
+*/
 const game = {
   size:100,
   time:30,
@@ -17,10 +16,11 @@ const game = {
   peeks:['peek-l','peek-r'],
   scoots:['scoot-l','scoot-r'],
   cover:['<i class="rock fas fa-mountain"></i>','<i class="tree fas fa-tree"></i>','<i class="bush fas fa-spa"></i>'],
-  crow:`<i class="score-bird animated slideInTop fas fa-crow"></i>`,
-  dove:`<i class="score-bird animated slideInTop fas fa-dove"></i>`,
-  kiwi:`<i class="score-bird animated slideInTop fas fa-kiwi-bird"></i>`,
+  crow:`<i class="score-bird animated bounce fast infinite fas fa-crow"></i>`,
+  dove:`<i class="score-bird animated bounce fast infinite fas fa-dove"></i>`,
+  kiwi:`<i class="score-bird animated bounce fast infinite fas fa-kiwi-bird"></i>`,
 };
+
 /*
 NOTE ===Field Generator===
 */
@@ -30,9 +30,14 @@ const buildField=(size)=>{
     $('#game-field').append(`<div class="tile">${coverType}</div>`)
   };
 };
+
 /*
 NOTE ===Game Clock=== 
 */
+const startClock=()=>{
+  gameClock = setInterval(tick,1000);
+};
+
 const tick=()=>{
   if(game.time!==0 && game.time%2===0){
     paboi(locator(game.size));
@@ -48,13 +53,10 @@ const tick=()=>{
     tally(game.p1);
     return
   };
-
   game.time -= 1;
 };
 
-const startClock=()=>{
-  gameClock = setInterval(tick,1000);
-}
+
 /*
 NOTE ===Coordinate Number Gen for PABOI()===
 */
@@ -87,12 +89,15 @@ const paboi =(position)=>{
   setTimeout(function(){$cover_active.removeClass('foreground')},1900);
 };
 
-//===Animation Speed Randomizer for funBirds===//
+/*
+NOTE ===Bird Bounce Animation for Splash / Score screens===
+*/
+//===Animation Speed Randomizer===//
 const speed=()=>{
   return game.aniSpeed[Math.floor(Math.random()*game.aniSpeed.length)];
 };
 
-//===Fun Animation for Splash and Score Screens===//
+//===Fun Animation===//
 const funBirds =()=>{
   for(let i=1;i<game.size;i+=Math.floor(Math.random()*(5 - 2 + 1) + 2)){
     paboi(i);
@@ -103,43 +108,24 @@ const funBirds =()=>{
   $('.scorable').removeClass('scorable');
 };
 
-/*
-NOTE ===Game Reset===
-*/
-const newGame=()=>{
-  game.time=30;
-  game.p1.crows=0;
-  game.p1.doves=0;
-  game.p1.kiwis=0;
-  game.p1.score=0;
-  $('#killScreen').addClass('animated fadeOut')
-  $('#countdown').html('');
-  $('.bird').remove();
-  setTimeout(function(){
-    $('.tile').remove();
-    $('#killScreen').remove();
-    buildField(game.size);
-    startClock();
-  },2000)
-};
 
-//===Sandbox===//NOTE ANIMATIONS
+/*
+NOTE ===Animations /  Animation Callers===
+*/
 const spooker=()=>{
   const randSpook = game.spooks[Math.floor(Math.random()*game.spooks.length)];
   console.log(randSpook);
   return randSpook;
   //$('.dove').addClass(`${randSpook}`)
-}
+};
 const peeker=()=>{
   const randPeek = game.peeks[Math.floor(Math.random()*game.peeks.length)]
   console.log(randPeek);
-  //return randPeek;
-//NOTE ALT function
   $('.crow').addClass(randPeek);
   setTimeout(function(){
     $('.crow').removeClass(randPeek)
   },1000);
-}
+};
 const scooter=()=>{
   const randScoot = game.scoots[Math.floor(Math.random()*game.scoots.length)];
   console.log(randScoot);
@@ -147,13 +133,16 @@ const scooter=()=>{
   console.log($('.kiwi').css('transition'));
   setTimeout(function(){
     $('.kiwi').removeClass('hop')
-
-    console.log($('.kiwi').css('transition'));
   },200);
   setTimeout(function(){
-    $('.kiwi').css('transition','1s linear').addClass(randScoot);
+    $('.kiwi').css('transition','1.5s linear').addClass(randScoot);
+    console.log($('.kiwi').css('transition'));
   },400);
-}
+};
+
+/*
+NOTE ===Game Start===
+*/
 const startSplash=()=>{
   buildField(game.size);
   funBirds();
@@ -172,6 +161,10 @@ const startSplash=()=>{
     </section>
   `);
 };
+
+/*
+NOTE ===Round End===
+*/
 const tally=(player)=>{
   $('main').append(`
     <section id="killScreen"class="splash animated fadeIn delay-1s">
@@ -198,26 +191,28 @@ const tally=(player)=>{
     </section>
   `);
 
-  scoreChecker();
+  
+  boardUpdater();
   funBirds();
-
-  for(let i=player.crows;i>0;i--){
-    setTimeout(function(){
-      $('#p1Crows').append(`${game.crow}`);
-      // $('#p1Crows').children().addClass('score-bird animated slideInTop fast');
-    },500);
-  }
-  for(let i=player.doves;i>0;i--){
-    $('#p1Doves').append(`${game.dove}`);
-    // $('#p1Doves').children().addClass('score-bird animated slideInTop fast');
-  }
-  for(let i=player.kiwis;i>0;i--){
-    $('#p1Kiwis').append(`${game.kiwi}`);
-    // $('#p1Kiwis').children().addClass('score-bird animated slideInTop fast');
-  }
-
-  $('.score').html(`${player.score}`).addClass('animated fadeIn')
 };
+
+boardUpdater=()=>{
+  for(let i=game.p1.crows;i>0;i--){
+    $('#p1Crows').append(`${game.crow}`);
+  };
+  for(let i=game.p1.doves;i>0;i--){
+    $('#p1Doves').append(`${game.dove}`);
+  };
+  for(let i=game.p1.kiwis;i>0;i--){
+    $('#p1Kiwis').append(`${game.kiwi}`);
+  };
+  $('.score').html(`${game.p1.score}`).addClass('animated fadeIn delay-2s')
+  scoreChecker();
+};
+
+/*
+NOTE ===Compare Score to Top and Update if >===
+*/
 const scoreChecker=()=>{
   if(game.p1.score>game.topScore){
     game.topScore=game.p1.score;
@@ -225,10 +220,9 @@ const scoreChecker=()=>{
   $('.top-score').html(`${game.topScore}`);
 };
 
-
-//===NOTE Listeners===//
-
-// Start Button 
+/*
+NOTE ===Start Button=== 
+*/
 $('body').on('click', '#start', ()=>{
   $('#logo').addClass('animated bounce');
   $('#startScreen').toggleClass('fadeOut');
@@ -237,16 +231,38 @@ $('body').on('click', '#start', ()=>{
     $('#startScreen').remove()
     startClock();
   },2000);
-})
+});
 
-// Replay Button
+/*
+NOTE ===Game Reset===
+*/
+const newGame=()=>{
+  game.time=30;
+  game.p1.crows=0;
+  game.p1.doves=0;
+  game.p1.kiwis=0;
+  game.p1.score=0;
+  $('#killScreen').addClass('animated fadeOut')
+  $('#countdown').html('');
+  $('.bird').remove();
+  setTimeout(function(){
+    $('.tile').remove();
+    $('#killScreen').remove();
+    buildField(game.size);
+    startClock();
+  },2000)
+};
+
+/* 
+NOTE ===Reset Board to Play Again===
+*/
 $('body').on('click','.replay', ()=>{
   $('.rp-bins').addClass('animated bounce');
   newGame();
 });
 
 /* 
-NOTE bird click listener
+NOTE ===Bird Mouseover Listener===
 */
 
 $("body").on('mouseover','.bird', function(event){
@@ -261,9 +277,11 @@ $("body").on('mouseover','.bird', function(event){
   };
 });
 
-//===AutoStart===//
-// buildField(game.size);
-//funBirds();
+/*
+NOTE ===AutoStart===
+*/
+
+
 startSplash();
 
 

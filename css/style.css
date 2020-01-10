@@ -22,19 +22,14 @@ main{
   display:flex;
   flex-direction:column;
   align-items:center;
-  /* border:solid 5px #C56C39; */
 }
 header{
-  /* margin:4vh;
-  padding:.25vh; */
   width:75vh;
   height:13vh;
   display:flex;
   flex-direction:row;
   align-items:flex-end;
   justify-content:flex-end;
-  /* background-color: rgba(0,0,0,.7); */
-  
 }
 footer{
   position:absolute;
@@ -55,7 +50,6 @@ footer p{
 }
 
 .splash{
-  /* visibility:hidden; */
   font-family:'Permanent Marker', cursive;
   position:absolute;
   display:flex;
@@ -133,19 +127,14 @@ h1{
   font-family:'Permanent Marker', cursive;
   color:#C56C39;
   font-size:70px;
-  /* height:7vh; */
-  /* margin-bottom:5vh; */
 }
 #killScreen{
-  /* visibility:visible; */
   display:flex;
   flex-direction:column;
   justify-content:center;
 
 }
 .sub-kill{
-  /* height:vh; */
-  /* width:70vh; */
   border-radius:2.5px;
   background-color:#BAE5F9;
 }
@@ -171,7 +160,6 @@ h1{
   margin:0 7px 0 10px;
   font-size:4vh;
   display:inline;
-  
 }
 .total{
   height:7vh;
@@ -180,7 +168,6 @@ h1{
   justify-content:flex-end;
   align-items:center;
   border-radius:2.5px;
-  /* background-color: #BAE5F9; */
 }
 .board-title{
   font-size:50px;
@@ -193,10 +180,8 @@ h1{
   font-size:35px;
   line-height:7vh;
   margin:0 5px;
-  /* line-height:40px; */
 }
 .colon{
-  /* font-family:'Courier New'; */
   font-size:55px;
 }
 .top-score{
@@ -207,10 +192,8 @@ h1{
 }
 .score{
 font-family:'Permanent Marker',cursive;
-/* position:relative; */
 bottom:2vh;
 font-size:80px;
-/* margin:0 30px 5px 10px; */
 line-height:7vh;
 color:#C56C39;
 }
@@ -234,10 +217,8 @@ color:#C56C39;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  /* border:5px solid #213A1B; */
 }
 .rp-bins{
-  /* position:absolute; */
   font-size:4vh;
 
 }
@@ -296,11 +277,7 @@ color:#C56C39;
   color: #56903A;
 }
 .dove{
-  /* transition-duration:1.5s;
-  transition-timing-function:  linear;
-  transform:translate(0, 0); */
   transition: 2s linear;
-
 }
 .crow{
   transition:.15s linear;
@@ -308,7 +285,6 @@ color:#C56C39;
 .kiwi{
   transition:.05s linear;
 }
-
 .logo{
 font-size: 4vh;
 }
@@ -334,7 +310,6 @@ button{
 /* Animations */
 .spook{
   transition-delay:.5s;
-  /* transition:1.5s linear; */
   transform:translate(0, -2000%);  
 }
 .spook-l{
@@ -356,13 +331,9 @@ button{
 .hop{
   transform:translate(0,-10%)
 }
-
-
 .scoot-l{
-  /* transition-delay:.5s; */
   transform:translateX(2000%); 
 }
 .scoot-r{
-  /* transition-delay:.5s; */
   transform:translateX(-2000%);
 }
