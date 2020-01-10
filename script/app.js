@@ -100,6 +100,7 @@ const funBirds =()=>{
   $.each($('.bird'), (elm)=>{
     $('.bird').eq(elm).addClass(`animated bounce infinite ${speed()}`).removeClass('crow kiwi dove');
   })
+  $('.scorable').removeClass('scorable');
 };
 
 /*
@@ -164,8 +165,8 @@ const startSplash=()=>{
           <h1 class="sub-title">B I R D <i class="fas fa-binoculars"></i> S P O T T E R <span id="year">2020</span></h1>
         </div>
         <div class="menubar sub-title">
-          <p>Click birds to spot them!</p>
-          <p id="start">S T A R T !</p>
+          <p>Use your binoculars!</p>
+          <p id="start">START!</p>
         </div>
       </section>
     </section>
@@ -244,27 +245,21 @@ $('body').on('click','.replay', ()=>{
   newGame();
 });
 
+/* 
+NOTE bird click listener
+*/
 
-// bird click listener
-//FIXME condense these. CURRENTLY EXTREMELY WET.
-
-$('body').on('mouseenter', '.crow', ()=>{
-  console.log('crow click')
-    game.p1.crows++;
-    game.p1.score+=2;
+$("body").on('mouseover','.bird', function(event){
+  var n = event.target.classList;
+  // console.log(n)
+  if(n.contains('bird')&&n.contains('scorable')){
+    console.log('booya')
+    if(n.contains('crow')){game.p1.crows++; game.p1.score+=2;};
+    if(n.contains('dove')){game.p1.doves++; game.p1.score+=5;};
+    if(n.contains('kiwi')){game.p1.kiwis++; game.p1.score+=10;};
+    $(event.target).removeClass('scorable');
+  };
 });
-$('body').on('mouseenter', '.dove', ()=>{
-  console.log('dove click');
-    game.p1.doves++;
-    game.p1.score+=4
-
-});
-$('body').on('mouseenter', '.kiwi', ()=>{
-  console.log('kiwi click')  
-    game.p1.kiwis++;
-    game.p1.score+=6;
-});
-
 
 //===AutoStart===//
 // buildField(game.size);

@@ -1,38 +1,27 @@
 <cover>
-//"rock"
-<i class="fas fa-mountain"></i>
-#848482
-//tree
-<i class="fas fa-tree"></i>
-//"bush"
-<i class="fas fa-spa"></i>
-<i class="fab fa-pagelines"></i>
-#d2691e
+  rock - <i class="fas fa-mountain"></i>
+
+  tree - <i class="fas fa-tree"></i>
+
+  bush - <i class="fas fa-spa"></i>
 
 <birds>
-//kiwi
-<i class="fas fa-kiwi-bird"></i>
-//crow
-<i class="fas fa-crow"></i>
-//dove
-<i class="fas fa-dove"></i>
+  kiwi - <i class="fas fa-kiwi-bird"></i>
+
+  crow - <i class="fas fa-crow"></i>
+
+  dove - <i class="fas fa-dove"></i>
 
 <cursor>
-//binoculars
-<i class="fas fa-binoculars"></i>
+  binoculars - <i class="fas fa-binoculars"></i>
 
 <colors>
-//diamond
-#BAE5F9
+  #BAE5F9 - diamond
 
-//copper
-#C56C39
+  #C56C39 - copper
 
-//coffee
-#6F4930
+  #6F4930 - coffee
 
-//may green
-#56903A
+  #56903A - may green
 
-//black leather jacket
-#213A1B
+  #213A1B - black leather jacket

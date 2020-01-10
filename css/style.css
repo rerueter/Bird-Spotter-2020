@@ -92,7 +92,7 @@ h1{
   font-family:'National Park Heavy';
   box-sizing:border-box;
   padding:0 10px;
-  color: #000000;
+  color: black;
   font-size: 50px;
   background-color:#BAE5F9;
   line-height:7vh;
@@ -185,7 +185,7 @@ h1{
 .board-title{
   font-size:50px;
   font-family:'National Park Heavy';
-  margin: 0 0 0 12px;
+  margin: -10px 0 0 5px;
 }
 .score-title{
   font-family:'National Park Regular';
@@ -276,13 +276,6 @@ color:#C56C39;
   justify-content:center;
   font-size:5vh;
 }
-/* font awesome default icon color - keep at top until replaced */
-/* .fas{
-  color: teal;
-  position:relative;
-  z-index:1;
-} */
-
 .bird{
   position:absolute;
   color:black;
