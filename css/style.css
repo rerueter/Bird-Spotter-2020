@@ -1,10 +1,10 @@
 @font-face{
   font-family:'National Park Regular';
-  src:url('/fonts/nationalpark-regular-webfont.woff') format('opentype');
+  src:url('../fonts/nationalpark-regular-webfont.woff') format('opentype');
 }
 @font-face{
   font-family:'National Park Heavy';
-  src:url('/fonts/nationalpark-Heavy-webfont.woff') format('opentype');
+  src:url('../fonts/nationalpark-Heavy-webfont.woff') format('opentype');
 }
 *{
   padding:0;
