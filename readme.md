@@ -65,7 +65,10 @@
 
   I used Google Fonts to source the Permanent Marker font, and Design Outside's National Park font. 
     https://nationalparktypeface.com/
-
+  
+  I used Ezgif's SVG to PNG converter to make the crow favicon and binocular cursor.
+    https://ezgif.com/svg-to-png
+    
 ## Wireframes
 
 One
