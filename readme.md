@@ -68,10 +68,21 @@
 
 ## Wireframes
 
-/images/P0_WF1.jpg
-/images/P0_WF2.jpg
-/images/P0_WF3.jpg
-/images/P0_WF4.jpg
-/images/P0_WF5.jpg
+One
+![WF 1](/images/P0_WF1.jpg)
+
+Two
+![WF 2](/images/P0_WF2.jpg)
+
+Three
+![WF 3](/images/P0_WF3.jpg)
+
+Four
+![WF 4](/images/P0_WF4.jpg)
+
+Five
+![WF 5](/images/P0_WF5.jpg)
+
+
 
  
